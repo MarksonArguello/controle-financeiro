@@ -7,10 +7,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
@@ -25,7 +22,7 @@ public class DespesaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrar(
+    public ResponseEntity<DadosDetalhamentoDespesa> cadastrar(
             @Valid
             @RequestBody
             DadosCadastramentoDespesa dadosCadastramento,
@@ -38,5 +35,11 @@ public class DespesaController {
                 .toUri();
         return ResponseEntity.created(uri)
                 .body(dadosDetalhamento);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosDetalhamentoDespesa> detalhar(@PathVariable Long id) {
+        var despesa = despesaService.detalhar(id);
+        return ResponseEntity.ok(despesa);
     }
 }
