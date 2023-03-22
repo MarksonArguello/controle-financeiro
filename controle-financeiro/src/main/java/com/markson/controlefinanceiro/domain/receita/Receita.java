@@ -22,4 +22,13 @@ public class Receita {
     private String descricao;
     private BigDecimal valor;
     private LocalDateTime data;
+
+    public Receita(DadosCadastramentoReceita dadosCadastramento) {
+        this(
+                null,
+                dadosCadastramento.descricao(),
+                dadosCadastramento.valor(),
+                dadosCadastramento.data()
+        );
+    }
 }
