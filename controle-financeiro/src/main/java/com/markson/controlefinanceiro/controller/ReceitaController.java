@@ -44,4 +44,14 @@ public class ReceitaController {
         Page<DadosDetalhamentoReceita> dadosDetalhamento = receitaService.listar(paginacao);
         return ResponseEntity.ok(dadosDetalhamento);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosDetalhamentoReceita> detalhar(
+            @PathVariable
+            Long id
+    ) {
+        DadosDetalhamentoReceita dadosDetalhamento = receitaService.detalhar(id);
+
+        return ResponseEntity.ok(dadosDetalhamento);
+    }
 }

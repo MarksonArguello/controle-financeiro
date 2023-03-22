@@ -1,6 +1,7 @@
 package com.markson.controlefinanceiro.domain.receita;
 
 import com.markson.controlefinanceiro.domain.receita.validacao.ValidadorCadastroReceita;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,5 +36,15 @@ public class ReceitaService {
         Page<Receita> receitas =  receitaRepository.findAll(paginacao);
 
         return receitas.map(DadosDetalhamentoReceita::new);
+    }
+
+    public DadosDetalhamentoReceita detalhar(Long id) {
+        if (!receitaRepository.existsById(id)) {
+            throw new EntityNotFoundException("Receita com o id informado não existe");
+        }
+
+        Receita receita = receitaRepository.getReferenceById(id);
+
+        return new DadosDetalhamentoReceita(receita);
     }
 }
