@@ -68,4 +68,11 @@ public class ReceitaController {
         DadosDetalhamentoReceita dadosDetalhamento = receitaService.atualizar(id, dadosAtualizacao);
         return ResponseEntity.ok(dadosDetalhamento);
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deletar(@PathVariable Long id) {
+        receitaService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
 }

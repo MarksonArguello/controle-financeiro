@@ -28,7 +28,7 @@ public class ReceitaService {
                 validador -> validador.validar(dadosCadastramento)
         );
 
-       var receita = new Receita(dadosCadastramento);
+        var receita = new Receita(dadosCadastramento);
 
         receitaRepository.save(receita);
 
@@ -46,7 +46,6 @@ public class ReceitaService {
             throw new EntityNotFoundException("Receita com o id informado não existe");
         }
 
-
         Receita receita = receitaRepository.getReferenceById(id);
 
         return new DadosDetalhamentoReceita(receita);
@@ -62,5 +61,13 @@ public class ReceitaService {
         Receita receita = receitaRepository.getReferenceById(id);
 
         return receita.atualizar(dadosAtualizacao);
+    }
+
+    public void deletar(Long id) {
+        if (!receitaRepository.existsById(id)) {
+            throw new EntityNotFoundException("Receita com o id informado não existe");
+        }
+
+        receitaRepository.deleteById(id);
     }
 }
