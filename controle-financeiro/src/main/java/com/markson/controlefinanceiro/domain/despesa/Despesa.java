@@ -22,4 +22,8 @@ public class Despesa {
     private String descricao;
     private BigDecimal valor;
     private LocalDateTime data;
+
+    public Despesa(DadosCadastramentoDespesa dadosCadastramento) {
+        this(null, dadosCadastramento.descricao(), dadosCadastramento.valor(), dadosCadastramento.data());
+    }
 }
