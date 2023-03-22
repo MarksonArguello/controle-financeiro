@@ -1,4 +1,4 @@
-package com.markson.controlefinanceiro.domain.despesa;
+package com.markson.controlefinanceiro.domain.receita.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public record DadosCadastramentoDespesa(
+public record DadosCadastramentoReceita(
         @NotBlank
         String descricao,
         @NotNull

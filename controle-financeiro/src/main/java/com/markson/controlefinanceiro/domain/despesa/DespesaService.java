@@ -1,9 +1,9 @@
 package com.markson.controlefinanceiro.domain.despesa;
 
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosDetalhamentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.validacao.cadastro.ValidadorCadastroDespesa;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,11 +27,5 @@ public class DespesaService {
         var despesa = new Despesa(dadosCadastramento);
         despesaRepository.save(despesa);
         return new DadosDetalhamentoDespesa(despesa);
-    }
-
-    public Page<DadosDetalhamentoDespesa> listar(Pageable paginacao) {
-        return despesaRepository
-                .findAll(paginacao)
-                .map(DadosDetalhamentoDespesa::new);
     }
 }

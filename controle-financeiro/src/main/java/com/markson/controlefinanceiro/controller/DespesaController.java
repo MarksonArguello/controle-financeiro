@@ -1,17 +1,16 @@
 package com.markson.controlefinanceiro.controller;
 
-import com.markson.controlefinanceiro.domain.despesa.DadosCadastramentoDespesa;
-import com.markson.controlefinanceiro.domain.despesa.DadosDetalhamentoDespesa;
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosDetalhamentoDespesa;
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.DespesaService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
@@ -26,7 +25,7 @@ public class DespesaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<DadosDetalhamentoDespesa> cadastrar(
+    public ResponseEntity cadastrar(
             @Valid
             @RequestBody
             DadosCadastramentoDespesa dadosCadastramento,
@@ -39,15 +38,5 @@ public class DespesaController {
                 .toUri();
         return ResponseEntity.created(uri)
                 .body(dadosDetalhamento);
-    }
-
-    @GetMapping
-    public ResponseEntity<Page<DadosDetalhamentoDespesa>> listar(
-            @PageableDefault(size = 20, sort = "data", direction = Sort.Direction.DESC)
-            Pageable paginacao)
-    {
-        var paginas = despesaService.listar(paginacao);
-
-        return ResponseEntity.ok(paginas);
     }
 }

@@ -1,8 +1,8 @@
 package com.markson.controlefinanceiro.controller;
 
-import com.markson.controlefinanceiro.domain.receita.DadosAtualizacaoReceita;
-import com.markson.controlefinanceiro.domain.receita.DadosCadastramentoReceita;
-import com.markson.controlefinanceiro.domain.receita.DadosDetalhamentoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosAtualizacaoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosCadastramentoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosDetalhamentoReceita;
 import com.markson.controlefinanceiro.domain.receita.ReceitaService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

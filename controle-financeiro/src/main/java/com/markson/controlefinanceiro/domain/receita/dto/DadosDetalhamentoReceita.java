@@ -1,4 +1,6 @@
-package com.markson.controlefinanceiro.domain.receita;
+package com.markson.controlefinanceiro.domain.receita.dto;
+
+import com.markson.controlefinanceiro.domain.receita.Receita;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

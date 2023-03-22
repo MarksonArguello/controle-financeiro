@@ -1,5 +1,8 @@
 package com.markson.controlefinanceiro.domain.receita;
 
+import com.markson.controlefinanceiro.domain.receita.dto.DadosAtualizacaoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosCadastramentoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosDetalhamentoReceita;
 import com.markson.controlefinanceiro.domain.receita.validacao.atualizacao.ValidadorAtualizacaoReceita;
 import com.markson.controlefinanceiro.domain.receita.validacao.cadastro.ValidadorCadastroReceita;
 import jakarta.persistence.EntityNotFoundException;

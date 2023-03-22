@@ -1,6 +1,6 @@
 package com.markson.controlefinanceiro.domain.despesa.validacao.cadastro;
 
-import com.markson.controlefinanceiro.domain.despesa.DadosCadastramentoDespesa;
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.DespesaRepository;
 import com.markson.controlefinanceiro.domain.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;

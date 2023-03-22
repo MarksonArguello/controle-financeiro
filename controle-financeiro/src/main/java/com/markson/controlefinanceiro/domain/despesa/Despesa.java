@@ -1,5 +1,6 @@
 package com.markson.controlefinanceiro.domain.despesa;
 
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

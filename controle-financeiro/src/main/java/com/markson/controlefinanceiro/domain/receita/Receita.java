@@ -1,5 +1,8 @@
 package com.markson.controlefinanceiro.domain.receita;
 
+import com.markson.controlefinanceiro.domain.receita.dto.DadosAtualizacaoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosCadastramentoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosDetalhamentoReceita;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

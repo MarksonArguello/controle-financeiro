@@ -1,4 +1,6 @@
-package com.markson.controlefinanceiro.domain.despesa;
+package com.markson.controlefinanceiro.domain.despesa.dto;
+
+import com.markson.controlefinanceiro.domain.despesa.Despesa;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

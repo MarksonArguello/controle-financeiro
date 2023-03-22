@@ -1,7 +1,7 @@
 package com.markson.controlefinanceiro.domain.receita.validacao.cadastro;
 
 import com.markson.controlefinanceiro.domain.exception.ValidacaoException;
-import com.markson.controlefinanceiro.domain.receita.DadosCadastramentoReceita;
+import com.markson.controlefinanceiro.domain.receita.dto.DadosCadastramentoReceita;
 import com.markson.controlefinanceiro.domain.receita.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
