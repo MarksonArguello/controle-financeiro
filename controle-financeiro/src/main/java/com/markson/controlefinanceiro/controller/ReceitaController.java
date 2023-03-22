@@ -6,11 +6,12 @@ import com.markson.controlefinanceiro.domain.receita.ReceitaService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
@@ -31,5 +32,16 @@ public class ReceitaController {
         return ResponseEntity
                 .created(uri)
                 .body(dadosDetalhamento);
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<DadosDetalhamentoReceita>> listar(
+            @PageableDefault(
+                    size = 20,
+                    sort = "data",
+                    direction = Sort.Direction.DESC)
+            Pageable paginacao) {
+        Page<DadosDetalhamentoReceita> dadosDetalhamento = receitaService.listar(paginacao);
+        return ResponseEntity.ok(dadosDetalhamento);
     }
 }

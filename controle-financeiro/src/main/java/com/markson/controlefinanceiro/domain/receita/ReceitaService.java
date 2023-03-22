@@ -2,6 +2,8 @@ package com.markson.controlefinanceiro.domain.receita;
 
 import com.markson.controlefinanceiro.domain.receita.validacao.ValidadorCadastroReceita;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,5 +29,11 @@ public class ReceitaService {
         receitaRepository.save(receita);
 
         return new DadosDetalhamentoReceita(receita);
+    }
+
+    public Page<DadosDetalhamentoReceita> listar(Pageable paginacao) {
+        Page<Receita> receitas =  receitaRepository.findAll(paginacao);
+
+        return receitas.map(DadosDetalhamentoReceita::new);
     }
 }
