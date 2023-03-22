@@ -1,4 +1,4 @@
-package com.markson.controlefinanceiro.domain.receita.validacao;
+package com.markson.controlefinanceiro.domain.receita.validacao.cadastro;
 
 import com.markson.controlefinanceiro.domain.exception.ValidacaoException;
 import com.markson.controlefinanceiro.domain.receita.DadosCadastramentoReceita;
@@ -6,7 +6,7 @@ import com.markson.controlefinanceiro.domain.receita.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "ValidadorCadastroReceitaDuplicada")
 public class ValidadorReceitaDuplicada implements ValidadorCadastroReceita{
     @Autowired
     private ReceitaRepository repository;
@@ -18,7 +18,7 @@ public class ValidadorReceitaDuplicada implements ValidadorCadastroReceita{
         );
 
         if (receitaJaEstaNoBanco) {
-            throw new ValidacaoException("Receita já esta no banco");
+            throw new ValidacaoException("Receita já esta cadastrada");
         }
     }
 }

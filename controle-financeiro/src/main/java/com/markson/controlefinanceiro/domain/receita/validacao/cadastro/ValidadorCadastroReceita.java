@@ -1,4 +1,4 @@
-package com.markson.controlefinanceiro.domain.receita.validacao;
+package com.markson.controlefinanceiro.domain.receita.validacao.cadastro;
 
 import com.markson.controlefinanceiro.domain.receita.DadosCadastramentoReceita;
 

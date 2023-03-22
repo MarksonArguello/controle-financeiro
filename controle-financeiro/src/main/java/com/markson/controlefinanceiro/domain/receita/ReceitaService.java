@@ -1,6 +1,7 @@
 package com.markson.controlefinanceiro.domain.receita;
 
-import com.markson.controlefinanceiro.domain.receita.validacao.ValidadorCadastroReceita;
+import com.markson.controlefinanceiro.domain.receita.validacao.atualizacao.ValidadorAtualizacaoReceita;
+import com.markson.controlefinanceiro.domain.receita.validacao.cadastro.ValidadorCadastroReceita;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,11 +14,13 @@ import java.util.List;
 public class ReceitaService {
     private final ReceitaRepository receitaRepository;
     private final List<ValidadorCadastroReceita> validadoresCadastro;
+    private final List<ValidadorAtualizacaoReceita> validadoresAtualizacao;
 
     @Autowired
-    public ReceitaService(ReceitaRepository receitaRepository, List<ValidadorCadastroReceita> validadoresCadastro) {
+    public ReceitaService(ReceitaRepository receitaRepository, List<ValidadorCadastroReceita> validadoresCadastro, List<ValidadorAtualizacaoReceita> validadoresAtualizacao) {
         this.receitaRepository = receitaRepository;
         this.validadoresCadastro = validadoresCadastro;
+        this.validadoresAtualizacao = validadoresAtualizacao;
     }
 
     public DadosDetalhamentoReceita cadastrar(DadosCadastramentoReceita dadosCadastramento) {
@@ -43,8 +46,21 @@ public class ReceitaService {
             throw new EntityNotFoundException("Receita com o id informado não existe");
         }
 
+
         Receita receita = receitaRepository.getReferenceById(id);
 
         return new DadosDetalhamentoReceita(receita);
+    }
+
+    public DadosDetalhamentoReceita atualizar(Long id, DadosAtualizacaoReceita dadosAtualizacao) {
+        if (!receitaRepository.existsById(id)) {
+            throw new EntityNotFoundException("Receita com o id informado não existe");
+        }
+
+        validadoresAtualizacao.forEach(validador -> validador.validar(id, dadosAtualizacao));
+
+        Receita receita = receitaRepository.getReferenceById(id);
+
+        return receita.atualizar(dadosAtualizacao);
     }
 }

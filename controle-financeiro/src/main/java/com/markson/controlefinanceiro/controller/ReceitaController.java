@@ -1,5 +1,6 @@
 package com.markson.controlefinanceiro.controller;
 
+import com.markson.controlefinanceiro.domain.receita.DadosAtualizacaoReceita;
 import com.markson.controlefinanceiro.domain.receita.DadosCadastramentoReceita;
 import com.markson.controlefinanceiro.domain.receita.DadosDetalhamentoReceita;
 import com.markson.controlefinanceiro.domain.receita.ReceitaService;
@@ -52,6 +53,19 @@ public class ReceitaController {
     ) {
         DadosDetalhamentoReceita dadosDetalhamento = receitaService.detalhar(id);
 
+        return ResponseEntity.ok(dadosDetalhamento);
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DadosDetalhamentoReceita> atualizar(
+            @PathVariable
+            Long id,
+            @Valid
+            @RequestBody
+            DadosAtualizacaoReceita dadosAtualizacao
+    ) {
+        DadosDetalhamentoReceita dadosDetalhamento = receitaService.atualizar(id, dadosAtualizacao);
         return ResponseEntity.ok(dadosDetalhamento);
     }
 }

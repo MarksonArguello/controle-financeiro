@@ -11,4 +11,12 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     AND EXTRACT(MONTH FROM r.data)=:mes
     """)
     Boolean existsByDescricaoAndMes(String descricao, int mes);
+
+    @Query("""
+    SELECT COUNT(*) > 0 FROM Receita r
+    WHERE r.id!=:id
+    AND r.descricao=:descricao
+    AND EXTRACT(MONTH FROM r.data)=:mes
+    """)
+    Boolean existsByDescricaoAndMesAndIdDiferente(String descricao, int mes, Long id);
 }

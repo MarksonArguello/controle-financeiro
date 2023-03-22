@@ -31,4 +31,12 @@ public class Receita {
                 dadosCadastramento.data()
         );
     }
+
+    public DadosDetalhamentoReceita atualizar(DadosAtualizacaoReceita dadosAtualizacao) {
+        this.descricao = dadosAtualizacao.descricao();
+        this.valor = dadosAtualizacao.valor();
+        this.data = dadosAtualizacao.data();
+
+        return new DadosDetalhamentoReceita(this);
+    }
 }
