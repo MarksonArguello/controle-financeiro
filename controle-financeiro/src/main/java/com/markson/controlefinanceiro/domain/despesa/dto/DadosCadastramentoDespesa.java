@@ -1,5 +1,6 @@
 package com.markson.controlefinanceiro.domain.despesa.dto;
 
+import com.markson.controlefinanceiro.domain.despesa.enums.Categoria;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -12,6 +13,7 @@ public record DadosCadastramentoDespesa(
         @NotNull
         BigDecimal valor,
         @NotNull
-        LocalDateTime data
+        LocalDateTime data,
+        Categoria categoria
 ) {
 }
