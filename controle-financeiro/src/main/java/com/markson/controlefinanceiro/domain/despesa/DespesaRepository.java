@@ -1,5 +1,7 @@
 package com.markson.controlefinanceiro.domain.despesa;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,4 +22,6 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long> {
         AND d.descricao ILIKE :descricao
     """)
     Boolean existsByDescricaoAndMesAndIdDiferente(String descricao, int mes, Long id);
+
+    Page<Despesa> findByDescricaoContainingIgnoreCase(Pageable paginacao, String descricao);
 }

@@ -46,9 +46,10 @@ public class DespesaService {
         return new DadosDetalhamentoDespesa(despesa);
     }
 
-    public Page<DadosDetalhamentoDespesa> listar(Pageable paginacao) {
-        return despesaRepository
-                .findAll(paginacao)
+    public Page<DadosDetalhamentoDespesa> listar(Pageable paginacao, String descricao) {
+        Page<Despesa> despesas = despesaRepository.findByDescricaoContainingIgnoreCase(paginacao,descricao);
+
+        return despesas
                 .map(DadosDetalhamentoDespesa::new);
     }
 

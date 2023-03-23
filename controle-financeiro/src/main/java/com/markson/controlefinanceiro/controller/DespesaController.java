@@ -51,9 +51,12 @@ public class DespesaController {
     @GetMapping
     public ResponseEntity<Page<DadosDetalhamentoDespesa>> listar(
             @PageableDefault(size = 20, sort = "data", direction = Sort.Direction.DESC)
-            Pageable paginacao)
+            Pageable paginacao,
+            @RequestParam(value = "descricao", required = false, defaultValue = "")
+            String descricao
+    )
     {
-        var paginas = despesaService.listar(paginacao);
+        var paginas = despesaService.listar(paginacao, descricao);
 
         return ResponseEntity.ok(paginas);
     }
