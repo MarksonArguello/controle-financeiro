@@ -38,8 +38,8 @@ public class ReceitaService {
         return new DadosDetalhamentoReceita(receita);
     }
 
-    public Page<DadosDetalhamentoReceita> listar(Pageable paginacao) {
-        Page<Receita> receitas =  receitaRepository.findAll(paginacao);
+    public Page<DadosDetalhamentoReceita> listar(Pageable paginacao, String descricao) {
+        Page<Receita> receitas = receitaRepository.findByDescricaoContainingIgnoreCase(paginacao,descricao);
 
         return receitas.map(DadosDetalhamentoReceita::new);
     }

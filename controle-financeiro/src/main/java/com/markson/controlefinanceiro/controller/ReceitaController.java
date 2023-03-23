@@ -41,8 +41,14 @@ public class ReceitaController {
                     size = 20,
                     sort = "data",
                     direction = Sort.Direction.DESC)
-            Pageable paginacao) {
-        Page<DadosDetalhamentoReceita> dadosDetalhamento = receitaService.listar(paginacao);
+            Pageable paginacao,
+            @RequestParam(
+                    required = false,
+                    value = "descricao",
+                    defaultValue = "")
+            String descricao
+    ) {
+        Page<DadosDetalhamentoReceita> dadosDetalhamento = receitaService.listar(paginacao, descricao);
         return ResponseEntity.ok(dadosDetalhamento);
     }
 
