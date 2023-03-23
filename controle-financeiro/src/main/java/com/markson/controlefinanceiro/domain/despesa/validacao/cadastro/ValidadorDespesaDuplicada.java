@@ -6,7 +6,7 @@ import com.markson.controlefinanceiro.domain.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("ValidadorCadastroDespesaDuplicada")
 public class ValidadorDespesaDuplicada implements ValidadorCadastroDespesa {
     @Autowired
     private DespesaRepository repository;

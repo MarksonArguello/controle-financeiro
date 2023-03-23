@@ -1,5 +1,6 @@
 package com.markson.controlefinanceiro.domain.despesa;
 
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosAtualizacaoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,5 +27,11 @@ public class Despesa {
 
     public Despesa(DadosCadastramentoDespesa dadosCadastramento) {
         this(null, dadosCadastramento.descricao(), dadosCadastramento.valor(), dadosCadastramento.data());
+    }
+
+    public void atualizar(DadosAtualizacaoDespesa dadosAtualizacao) {
+        this.data = dadosAtualizacao.data();
+        this.descricao = dadosAtualizacao.descricao();
+        this.valor = dadosAtualizacao.valor();
     }
 }
