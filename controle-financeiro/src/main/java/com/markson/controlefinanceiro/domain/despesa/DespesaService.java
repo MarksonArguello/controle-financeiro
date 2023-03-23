@@ -72,4 +72,10 @@ public class DespesaService {
 
         despesaRepository.deleteById(id);
     }
+
+    public Page<DadosDetalhamentoDespesa> listarReceitaDoMes(int ano, int mes, Pageable paginacao) {
+        Page<Despesa> despesas = despesaRepository.findByAnoAndMes(ano, mes, paginacao);
+        return despesas
+                .map(DadosDetalhamentoDespesa::new);
+    }
 }

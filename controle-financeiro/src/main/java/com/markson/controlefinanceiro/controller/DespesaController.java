@@ -54,8 +54,7 @@ public class DespesaController {
             Pageable paginacao,
             @RequestParam(value = "descricao", required = false, defaultValue = "")
             String descricao
-    )
-    {
+    ) {
         var paginas = despesaService.listar(paginacao, descricao);
 
         return ResponseEntity.ok(paginas);
@@ -83,5 +82,12 @@ public class DespesaController {
         return ResponseEntity
                 .noContent()
                 .build();
+    }
+
+    @GetMapping("/{ano}/{mes}")
+    public ResponseEntity<Page<DadosDetalhamentoDespesa>> listarReceitaDoMes(@PathVariable int ano, @PathVariable int mes, @PageableDefault(size = 20, sort = "data", direction = Sort.Direction.DESC) Pageable paginacao) {
+        Page<DadosDetalhamentoDespesa> despesas = despesaService.listarReceitaDoMes(ano, mes, paginacao);
+
+        return ResponseEntity.ok(despesas);
     }
 }

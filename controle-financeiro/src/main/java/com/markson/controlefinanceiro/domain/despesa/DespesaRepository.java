@@ -24,4 +24,11 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long> {
     Boolean existsByDescricaoAndMesAndIdDiferente(String descricao, int mes, Long id);
 
     Page<Despesa> findByDescricaoContainingIgnoreCase(Pageable paginacao, String descricao);
+
+    @Query("""
+    SELECT d FROM Despesa d
+    WHERE EXTRACT(YEAR FROM d.data)=:ano
+    AND EXTRACT(MONTH FROM d.data)=:mes
+    """)
+    Page<Despesa> findByAnoAndMes(int ano, int mes, Pageable paginacao);
 }
