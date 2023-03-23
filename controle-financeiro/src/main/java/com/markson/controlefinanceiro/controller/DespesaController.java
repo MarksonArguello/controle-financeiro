@@ -71,4 +71,14 @@ public class DespesaController {
 
         return ResponseEntity.ok(dadosDetalhamento);
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deletar(@PathVariable Long id) {
+        despesaService.deletar(id);
+
+        return ResponseEntity
+                .noContent()
+                .build();
+    }
 }

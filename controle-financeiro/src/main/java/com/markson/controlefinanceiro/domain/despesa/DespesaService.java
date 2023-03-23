@@ -63,4 +63,12 @@ public class DespesaService {
         despesa.atualizar(dadosAtualizacao);
         return new DadosDetalhamentoDespesa(despesa);
     }
+
+    public void deletar(Long id) {
+        if (!despesaRepository.existsById(id)) {
+            throw new ValidacaoException("Despesa com o id informado não existe");
+        }
+
+        despesaRepository.deleteById(id);
+    }
 }
