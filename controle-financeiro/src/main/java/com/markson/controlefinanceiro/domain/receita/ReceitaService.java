@@ -73,4 +73,11 @@ public class ReceitaService {
 
         receitaRepository.deleteById(id);
     }
+
+    public Page<DadosDetalhamentoReceita> listarReceitasDoMes(int ano, int mes, Pageable paginacao) {
+        Page<Receita> receitas = receitaRepository.findByAnoAndMes(ano, mes, paginacao);
+
+        return receitas
+                .map(DadosDetalhamentoReceita::new);
+    }
 }

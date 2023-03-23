@@ -81,4 +81,11 @@ public class ReceitaController {
         receitaService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{ano}/{mes}")
+    public ResponseEntity<Page<DadosDetalhamentoReceita>> listarReceitaDoMes( @PathVariable int ano, @PathVariable int mes, @PageableDefault(size = 20, sort = "data", direction = Sort.Direction.DESC) Pageable paginacao) {
+        Page<DadosDetalhamentoReceita> receitas = receitaService.listarReceitasDoMes(ano, mes, paginacao);
+
+        return ResponseEntity.ok(receitas);
+    }
 }

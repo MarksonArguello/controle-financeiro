@@ -23,4 +23,11 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     Boolean existsByDescricaoAndMesAndIdDiferente(String descricao, int mes, Long id);
 
     Page<Receita> findByDescricaoContainingIgnoreCase(Pageable paginacao, String descricao);
+
+    @Query("""
+    SELECT r FROM Receita r
+    WHERE EXTRACT(YEAR FROM r.data)=:ano
+    AND EXTRACT(MONTH FROM r.data)=:mes
+    """)
+    Page<Receita> findByAnoAndMes(int ano, int mes, Pageable paginacao);
 }
