@@ -6,11 +6,13 @@ import com.markson.controlefinanceiro.domain.despesa.dto.DadosDetalhamentoDespes
 import com.markson.controlefinanceiro.domain.despesa.validacao.atualizacao.ValidadorAtulizacaoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.validacao.cadastro.ValidadorCadastroDespesa;
 import com.markson.controlefinanceiro.domain.exception.ValidacaoException;
+import com.markson.controlefinanceiro.domain.resumo.GastoPorCategoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -77,5 +79,18 @@ public class DespesaService {
         Page<Despesa> despesas = despesaRepository.findByAnoAndMes(ano, mes, paginacao);
         return despesas
                 .map(DadosDetalhamentoDespesa::new);
+    }
+
+    public BigDecimal valorTotalDespesasNoMes(int ano, int mes) {
+        BigDecimal total = despesaRepository.valorTotalDespesasNoMes(ano, mes);
+
+        if (total == null)
+            return BigDecimal.ZERO;
+
+        return total;
+    }
+
+    public List<GastoPorCategoria> gastoPorCategoriaNoMes(int ano, int mes) {
+        return despesaRepository.gastoPorCategoriaNoMes(ano, mes);
     }
 }

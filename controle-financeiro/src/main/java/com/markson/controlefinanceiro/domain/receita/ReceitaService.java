@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -79,5 +80,14 @@ public class ReceitaService {
 
         return receitas
                 .map(DadosDetalhamentoReceita::new);
+    }
+
+    public BigDecimal valorTotalReceitasNoMes(int ano, int mes) {
+        BigDecimal total = receitaRepository.valorTotalReceitasNoMes(ano, mes);
+
+        if (total == null)
+            return BigDecimal.ZERO;
+
+        return total;
     }
 }

@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.math.BigDecimal;
+
 
 public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     @Query("""
@@ -30,4 +32,11 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     AND EXTRACT(MONTH FROM r.data)=:mes
     """)
     Page<Receita> findByAnoAndMes(int ano, int mes, Pageable paginacao);
+
+    @Query("""
+    SELECT SUM(r.valor) FROM Receita r
+    WHERE EXTRACT(YEAR FROM r.data)=:ano
+    AND EXTRACT(MONTH FROM r.data)=:mes
+    """)
+    BigDecimal valorTotalReceitasNoMes(int ano, int mes);
 }
