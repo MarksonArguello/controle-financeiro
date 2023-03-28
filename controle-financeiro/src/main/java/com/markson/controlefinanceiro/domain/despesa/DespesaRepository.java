@@ -12,6 +12,9 @@ import java.util.List;
 
 @Repository
 public interface DespesaRepository extends JpaRepository<Despesa, Long> {
+
+    Despesa findDespesaByDescricaoIsLikeIgnoreCaseAndValor(String descricao, BigDecimal valor);
+
     @Query("""
     SELECT COUNT(*) > 0 FROM Despesa d
     WHERE d.descricao ILIKE :descricao
