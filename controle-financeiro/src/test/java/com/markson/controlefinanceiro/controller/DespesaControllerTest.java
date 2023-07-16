@@ -16,6 +16,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -65,6 +66,7 @@ public class DespesaControllerTest {
         }
 
         @Test
+        @WithMockUser
         void cadastraNoBancoQuandoInformacoesValidas() throws Exception {
             // Given
             var despesa = new Despesa(null,"Comida", new BigDecimal("1500"),LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), Categoria.ALIMENTACAO);
@@ -87,6 +89,7 @@ public class DespesaControllerTest {
 
 
         @Test
+        @WithMockUser
         void returns400QuandoDespesaJaCadastrada() throws Exception {
             // Given
             var despesa = new Despesa(null, "Remedios", new BigDecimal("500.00"),LocalDateTime.now(), Categoria.SAUDE);
