@@ -1,1 +1,23 @@
-<p>app works!</p>
+<div class="depesas">
+  <table class="table despesas">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Data</th>
+        <th scope="col">Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let despesa of despesas">
+        <th scope="row">{{ despesa.id }}</th>
+        <td>{{ despesa.descricao }}</td>
+        <td>{{ despesa.valor }}</td>
+        <td>{{ despesa.data }}</td>
+        <td>{{ despesa.categoria }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
