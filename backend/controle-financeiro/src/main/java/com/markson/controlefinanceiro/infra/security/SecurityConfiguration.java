@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,18 +21,28 @@ public class SecurityConfiguration {
     @Autowired
     private SecurityFilter securityFilter;
 
+    private static final String[] AUTH_WHITELIST = {
+            "**/swagger-resources/**",
+            "**/swagger-ui.html",
+            "**/v2/api-docs",
+            "**/webjars/**",
+            "**/v3/api-docs",
+            "**/swagger-ui/**"
+    };
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         return http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
-                .anyRequest().authenticated()
-                .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+                .requestMatchers(HttpMethod.GET, "/**").permitAll().and().build();
+                //.anyRequest().authenticated()
+                //.and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                //.build();
     }
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
