@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'; // CLI imports router
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = []; // sets up routes constant where you define your routes
+import { AppComponent } from './controle-financeiro/app/app.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', children: [] },
+  { path: 'controle-financeiro', component: AppComponent },
+]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports
 @NgModule({
