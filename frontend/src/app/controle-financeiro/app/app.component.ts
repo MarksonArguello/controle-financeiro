@@ -12,13 +12,8 @@ export class AppComponent implements OnInit {
 
   despesas: Despesa[] = [];
   showModalDeletar = false;
-  despesaSelecionada: Despesa = {
-    id: 0,
-    descricao: '',
-    valor: 0,
-    data: '',
-    categoria: '',
-  };
+  despesaSelecionada: Despesa = {} as Despesa;
+  valorFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
   constructor(
     private service: DespesaService
@@ -31,7 +26,10 @@ export class AppComponent implements OnInit {
   listarDespesas() {
     this.service.get().subscribe(
       despesaPage => {
-        this.despesas = despesaPage.content;
+        this.despesas = despesaPage.content.sort((a, b) => a.id - b.id);
+        this.despesas.forEach(despesa => {
+          despesa.data = new Date(despesa.data);
+        });
       }
     );
   }

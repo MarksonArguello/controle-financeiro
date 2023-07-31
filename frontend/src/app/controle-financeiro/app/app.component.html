@@ -14,8 +14,8 @@
       <tr *ngFor="let despesa of despesas">
         <th scope="row">{{ despesa.id }}</th>
         <td>{{ despesa.descricao }}</td>
-        <td>{{ despesa.valor }}</td>
-        <td>{{ despesa.data }}</td>
+        <td>{{ valorFormat.format(despesa.valor) }}</td>
+        <td>{{ despesa.data.toLocaleDateString('pt-BR') }}</td>
         <td>{{ despesa.categoria }}</td>
         <td>
           <!-- <button type="button" class="btn btn-primary" (click)="editar(despesa)">Editar</button> -->
