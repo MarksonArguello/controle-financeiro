@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 .and().authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
-                .requestMatchers(HttpMethod.GET, "/**").permitAll().and().build();
+                .requestMatchers("/**").permitAll().and().build();
                 //.anyRequest().authenticated()
                 //.and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 //.build();

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+
 import { Despesa } from '../models/despesa';
+import { DespesaPage } from '../models/despesaPage';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,12 @@ export class DespesaService {
     private http: HttpClient
   ) { }
 
-  getDespesas(): Observable<any> {
-    return this.http.get<any>(this.API);
+  get(): Observable<DespesaPage> {
+    return this.http.get<DespesaPage>(this.API);
+  }
+
+  delete(despesa: Despesa): Observable<any> {
+    return this.http.delete(`${this.API}/${despesa.id}`);
   }
 
 }

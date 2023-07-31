@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Despesa } from '../models/despesa';
 import { DespesaService } from '../services/despesa.service';
 
@@ -11,6 +11,14 @@ import { DespesaService } from '../services/despesa.service';
 export class AppComponent implements OnInit {
 
   despesas: Despesa[] = [];
+  showModalDeletar = false;
+  despesaSelecionada: Despesa = {
+    id: 0,
+    descricao: '',
+    valor: 0,
+    data: '',
+    categoria: '',
+  };
 
   constructor(
     private service: DespesaService
@@ -21,9 +29,23 @@ export class AppComponent implements OnInit {
   }
 
   listarDespesas() {
-    this.service.getDespesas().subscribe(
-      dados => this.despesas = dados['content']
+    this.service.get().subscribe(
+      despesaPage => {
+        this.despesas = despesaPage.content;
+      }
     );
   }
 
+  excluir(despesa: Despesa) {
+    this.service.delete(despesa).subscribe(
+      () => {
+        this.despesas.splice(this.despesas.indexOf(despesa), 1);
+      }
+    );
+  }
+
+  abrirModalDeletar(despesa: Despesa) {
+    this.showModalDeletar = true;
+    this.despesaSelecionada = despesa;
+  }
 }
