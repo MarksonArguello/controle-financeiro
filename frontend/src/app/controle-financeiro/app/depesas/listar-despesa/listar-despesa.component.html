@@ -14,9 +14,9 @@
       <tr *ngFor="let despesa of despesas">
         <th scope="row">{{ despesa.id }}</th>
         <td>{{ despesa.descricao }}</td>
-        <td>{{ valorFormat.format(despesa.valor) }}</td>
-        <td>{{ despesa.data.toLocaleDateString('pt-BR') }}</td>
-        <td>{{ despesa.categoria }}</td>
+        <td>{{ utils.formatarMoeda(despesa.valor) }}</td>
+        <td>{{ utils.formatarData(despesa.data) }}</td>
+        <td>{{ utils.capitalize(despesa.categoria) }}</td>
         <td>
           <!-- <button type="button" class="btn btn-primary" (click)="editar(despesa)">Editar</button> -->
           <button type="button" class="btn btn-danger" (click)="abrirModalDeletar(despesa)">Excluir</button>
@@ -24,9 +24,9 @@
     </tbody>
   </table>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="showModalDeletar = true">
-  Launch demo modal
+
+<button type="button" class="btn btn-primary">
+  Cadastrar
 </button>
 
 <!-- Modal -->

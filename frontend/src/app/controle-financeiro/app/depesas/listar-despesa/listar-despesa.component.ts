@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Despesa } from 'src/app/controle-financeiro/models/despesa';
 import { DespesaService } from 'src/app/controle-financeiro/services/despesa.service';
+import { Utils } from 'src/app/controle-financeiro/utils/Utils';
 
 @Component({
   selector: 'app-listar-despesa',
@@ -11,10 +12,11 @@ export class ListarDespesaComponent implements OnInit {
   despesas: Despesa[] = [];
   showModalDeletar = false;
   despesaSelecionada: Despesa = {} as Despesa;
-  valorFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
+  utils = new Utils();
+
 
   constructor(
-    private service: DespesaService
+    private service: DespesaService,
   ) { }
 
   ngOnInit(): void {
