@@ -1,55 +1,6 @@
-<div class="depesas">
-  <table class="table despesas">
-    <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">Descrição</th>
-        <th scope="col">Valor</th>
-        <th scope="col">Data</th>
-        <th scope="col">Categoria</th>
-        <th scope="col">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let despesa of despesas">
-        <th scope="row">{{ despesa.id }}</th>
-        <td>{{ despesa.descricao }}</td>
-        <td>{{ valorFormat.format(despesa.valor) }}</td>
-        <td>{{ despesa.data.toLocaleDateString('pt-BR') }}</td>
-        <td>{{ despesa.categoria }}</td>
-        <td>
-          <!-- <button type="button" class="btn btn-primary" (click)="editar(despesa)">Editar</button> -->
-          <button type="button" class="btn btn-danger" (click)="abrirModalDeletar(despesa)">Excluir</button>
-      </tr>
-    </tbody>
-  </table>
+<div class="listar-despesa">
+  <div>
+    <h3>Despesas</h3>
+    <app-listar-despesa></app-listar-despesa>
+  <div>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="showModalDeletar = true">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade show" #exampleModal id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" [class.d-block]="showModalDeletar">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
-        <button type="button" class="close" data-dismiss="modal" (click)="showModalDeletar = false" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Deseja deletar o registro?<br>
-        <strong>Id:</strong> {{ despesaSelecionada.id }}<br>
-        <strong>Descrição:</strong> {{ despesaSelecionada.descricao }}<br>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="showModalDeletar = false">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="excluir(despesaSelecionada)">Confirmar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal-backdrop fade" [class]="showModalDeletar? 'd-block' : 'd-none'" [class.show]="showModalDeletar" ></div>

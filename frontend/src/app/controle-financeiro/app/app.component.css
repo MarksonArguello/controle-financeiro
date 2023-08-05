@@ -1,0 +1,8 @@
+.listar-despesa {
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  flex-direction: row;
+}
