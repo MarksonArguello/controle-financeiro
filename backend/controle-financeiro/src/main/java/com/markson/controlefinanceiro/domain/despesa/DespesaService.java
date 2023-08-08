@@ -3,6 +3,7 @@ package com.markson.controlefinanceiro.domain.despesa;
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosAtualizacaoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosDetalhamentoDespesa;
+import com.markson.controlefinanceiro.domain.despesa.enums.Categoria;
 import com.markson.controlefinanceiro.domain.despesa.validacao.atualizacao.ValidadorAtulizacaoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.validacao.cadastro.ValidadorCadastroDespesa;
 import com.markson.controlefinanceiro.domain.exception.ValidacaoException;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -53,6 +55,10 @@ public class DespesaService {
 
         return despesas
                 .map(DadosDetalhamentoDespesa::new);
+    }
+
+    public List<Categoria> listarCategorias() {
+        return Arrays.asList(Categoria.class.getEnumConstants());
     }
 
     public DadosDetalhamentoDespesa atualizar(Long id, DadosAtualizacaoDespesa dadosAtualizacao) {

@@ -4,6 +4,7 @@ import com.markson.controlefinanceiro.domain.despesa.dto.DadosAtualizacaoDespesa
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosDetalhamentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.DespesaService;
+import com.markson.controlefinanceiro.domain.despesa.enums.Categoria;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/despesas")
@@ -58,6 +61,11 @@ public class DespesaController {
         var paginas = despesaService.listar(paginacao, descricao);
 
         return ResponseEntity.ok(paginas);
+    }
+
+    @GetMapping("/categorias")
+    public ResponseEntity<List<Categoria>> listarCategorias() {
+        return ResponseEntity.ok(despesaService.listarCategorias());
     }
 
     @PutMapping("/{id}")
