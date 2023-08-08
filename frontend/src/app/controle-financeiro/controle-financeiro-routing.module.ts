@@ -4,11 +4,8 @@ import { ListarDespesaComponent } from './app/despesas/listar-despesa/listar-des
 import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despesa.component';
 
 const routes: Routes = [
-  { path: 'controle-financeiro', children: [
-    { path: 'criarDespesa', component: CriarDespesaComponent },
-    { path: '', component: ListarDespesaComponent }
-  ]}
-
+  { path: 'criarDespesa', component: CriarDespesaComponent },
+  { path: '', component: ListarDespesaComponent }
 ];
 
 @NgModule({

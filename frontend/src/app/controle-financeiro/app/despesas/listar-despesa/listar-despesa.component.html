@@ -25,9 +25,11 @@
   </table>
 </div>
 
-<button type="button" class="btn btn-primary">
-  Cadastrar
-</button>
+<a class="nav-link" routerLink="./criarDespesa" routerLinkActive="active" ariaCurrentWhenActive="page">
+  <button type="button" class="btn btn-primary">
+    Cadastrar
+  </button>
+</a>
 
 <!-- Modal -->
 <div class="modal fade show" #exampleModal id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" [class.d-block]="showModalDeletar">

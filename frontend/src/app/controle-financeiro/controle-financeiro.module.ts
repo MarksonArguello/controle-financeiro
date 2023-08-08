@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { ControleFinanceiroRoutingModule } from './controle-financeiro-routing.module';
 import { AppComponent } from './app/app.component';
@@ -17,7 +16,6 @@ import { DespesasComponent } from './app/despesas/despesas.component';
     DespesasComponent
   ],
   imports: [
-    BrowserModule,
     CommonModule,
     ControleFinanceiroRoutingModule
   ]

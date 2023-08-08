@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ControleFinanceiroModule } from './controle-financeiro/controle-financeiro.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { ControleFinanceiroModule } from './controle-financeiro/controle-finance
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ControleFinanceiroModule
   ],
   providers: [],
   bootstrap: [AppComponent]

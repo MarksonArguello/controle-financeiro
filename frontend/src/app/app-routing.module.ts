@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'home', children: [] },
+  { path: 'controle-financeiro', loadChildren: () => import('./controle-financeiro/controle-financeiro.module').then(m => m.ControleFinanceiroModule) },
   { path: '', redirectTo: 'home', pathMatch: 'full'}
 ]; // sets up routes constant where you define your routes
 
