@@ -1,6 +1,7 @@
 package com.markson.controlefinanceiro.controller;
 
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosAtualizacaoDespesa;
+import com.markson.controlefinanceiro.domain.despesa.dto.DadosDetalhamentoCategoria;
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosDetalhamentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.dto.DadosCadastramentoDespesa;
 import com.markson.controlefinanceiro.domain.despesa.DespesaService;
@@ -64,7 +65,7 @@ public class DespesaController {
     }
 
     @GetMapping("/categorias")
-    public ResponseEntity<List<Categoria>> listarCategorias() {
+    public ResponseEntity<List<DadosDetalhamentoCategoria>> listarCategorias() {
         return ResponseEntity.ok(despesaService.listarCategorias());
     }
 
