@@ -5,6 +5,7 @@ import { ControleFinanceiroRoutingModule } from './controle-financeiro-routing.m
 import { AppComponent } from './app/app.component';
 import { ListarDespesaComponent } from './app/despesas/listar-despesa/listar-despesa.component';
 import { DespesasComponent } from './app/despesas/despesas.component';
+import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despesa.component';
 
 
 
@@ -13,7 +14,8 @@ import { DespesasComponent } from './app/despesas/despesas.component';
   declarations: [
     AppComponent,
     ListarDespesaComponent,
-    DespesasComponent
+    DespesasComponent,
+    CriarDespesaComponent
   ],
   imports: [
     CommonModule,

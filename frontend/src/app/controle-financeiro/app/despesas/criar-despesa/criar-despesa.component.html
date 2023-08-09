@@ -1,4 +1,40 @@
-<p>
-  criar-despesa works!
-</p>
-asdd
+<h3>Criar despesa</h3>
+<form>
+  <div class="row">
+    <div class="col">
+      <label for="descricao" class="form-label">Descrição</label>
+      <input  name="descricao" class="form-control" type="text" placeholder="Conta de luz" aria-label="default input example">
+    </div>
+    <div class="col">
+        <label for="valor" class="form-label">Valor</label>
+        <input name="valor" class="form-control" type="number" aria-label="default input example">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <label for="data" class="form-label">Data</label>
+      <input name="data" type="date" class="form-control">
+    </div>
+    <div class="col">
+      <label for="categoria" class="form-label">Descrição</label>
+      <select name="categoria" class="form-control">
+        <option *ngFor="let categoria of categorias" [value]="categoria.valor">
+          {{ categoria.texto }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex align-items-end">
+      <div class="d-flex justify-content-evenly w-100">
+        <a routerLink="/controle-financeiro" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <button type="button" routerLinkActive="router-link-active"  class="btn btn-danger">Cancelar</button>
+        </a>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</form>
+
