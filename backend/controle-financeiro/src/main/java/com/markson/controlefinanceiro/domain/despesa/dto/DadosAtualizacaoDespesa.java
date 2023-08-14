@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public record DadosAtualizacaoDespesa(
         @NotBlank
@@ -12,6 +12,6 @@ public record DadosAtualizacaoDespesa(
         @NotNull
         BigDecimal valor,
         @NotNull
-        LocalDateTime data
+        LocalDate data
 ) {
 }

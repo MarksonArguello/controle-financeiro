@@ -22,7 +22,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -69,7 +69,7 @@ public class DespesaControllerTest {
         @WithMockUser
         void cadastraNoBancoQuandoInformacoesValidas() throws Exception {
             // Given
-            var despesa = new Despesa(null,"Comida", new BigDecimal("1500"),LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS), Categoria.ALIMENTACAO);
+            var despesa = new Despesa(null,"Comida", new BigDecimal("1500"),LocalDate.now(), Categoria.ALIMENTACAO);
             var dtoDespesa = new DadosCadastramentoDespesa(despesa.getDescricao(), despesa.getValor(), despesa.getData(), despesa.getCategoria());
 
             // When
@@ -92,7 +92,7 @@ public class DespesaControllerTest {
         @WithMockUser
         void returns400QuandoDespesaJaCadastrada() throws Exception {
             // Given
-            var despesa = new Despesa(null, "Remedios", new BigDecimal("500.00"),LocalDateTime.now(), Categoria.SAUDE);
+            var despesa = new Despesa(null, "Remedios", new BigDecimal("500.00"),LocalDate.now(), Categoria.SAUDE);
             var dtoDespesa = new DadosCadastramentoDespesa(despesa.getDescricao(), despesa.getValor(), despesa.getData(), despesa.getCategoria());
 
             // When

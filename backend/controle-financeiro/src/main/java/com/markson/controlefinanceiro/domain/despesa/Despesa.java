@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity(name = "Despesa")
 @Table(name = "despesas")
@@ -22,11 +22,11 @@ public class Despesa {
     private Long id;
     private String descricao;
     private BigDecimal valor;
-    private LocalDateTime data;
+    private LocalDate data;
     @Enumerated(EnumType.STRING)
     private Categoria categoria = Categoria.OUTRAS;
 
-    public Despesa(Long id, String descricao, BigDecimal valor, LocalDateTime data, Categoria categoria) {
+    public Despesa(Long id, String descricao, BigDecimal valor, LocalDate data, Categoria categoria) {
         this.id = id;
         this.descricao = descricao;
         this.valor = valor;
