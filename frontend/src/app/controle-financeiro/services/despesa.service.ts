@@ -29,4 +29,8 @@ export class DespesaService {
     return this.http.delete(`${this.API}/${despesa.id}`);
   }
 
+  create(despesa: Despesa): Observable<Despesa> {
+    return this.http.post<Despesa>(this.API, despesa);
+  }
+
 }

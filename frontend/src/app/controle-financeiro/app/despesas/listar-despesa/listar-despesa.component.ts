@@ -40,6 +40,8 @@ export class ListarDespesaComponent implements OnInit {
         this.despesas.splice(this.despesas.indexOf(despesa), 1);
       }
     );
+
+    this.showModalDeletar = false;
   }
 
   abrirModalDeletar(despesa: Despesa) {

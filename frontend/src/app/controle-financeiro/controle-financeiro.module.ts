@@ -6,6 +6,7 @@ import { AppComponent } from './app/app.component';
 import { ListarDespesaComponent } from './app/despesas/listar-despesa/listar-despesa.component';
 import { DespesasComponent } from './app/despesas/despesas.component';
 import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despesa.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,8 @@ import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despes
   ],
   imports: [
     CommonModule,
-    ControleFinanceiroRoutingModule
+    ControleFinanceiroRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ControleFinanceiroModule { }
