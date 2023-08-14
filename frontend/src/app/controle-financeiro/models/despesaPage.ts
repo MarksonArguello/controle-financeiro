@@ -1,5 +1,5 @@
-import { Despesa } from "./despesa";
+import { Despesa } from './despesa';
 
 export interface DespesaPage {
-    content: Despesa[];
+  content: Despesa[];
 }

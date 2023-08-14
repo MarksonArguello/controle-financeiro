@@ -6,7 +6,7 @@ import { Utils } from 'src/app/controle-financeiro/utils/Utils';
 @Component({
   selector: 'app-listar-despesa',
   templateUrl: './listar-despesa.component.html',
-  styleUrls: ['./listar-despesa.component.css']
+  styleUrls: ['./listar-despesa.component.css'],
 })
 export class ListarDespesaComponent implements OnInit {
   despesas: Despesa[] = [];
@@ -14,32 +14,25 @@ export class ListarDespesaComponent implements OnInit {
   despesaSelecionada: Despesa = {} as Despesa;
   utils = new Utils();
 
-
-  constructor(
-    private service: DespesaService,
-  ) { }
+  constructor(private service: DespesaService) {}
 
   ngOnInit(): void {
     this.listarDespesas();
   }
 
   listarDespesas() {
-    this.service.get().subscribe(
-      despesaPage => {
-        this.despesas = despesaPage.content.sort((a, b) => a.id - b.id);
-        this.despesas.forEach(despesa => {
-          despesa.data = new Date(despesa.data);
-        });
-      }
-    );
+    this.service.get().subscribe(despesaPage => {
+      this.despesas = despesaPage.content.sort((a, b) => a.id - b.id);
+      this.despesas.forEach(despesa => {
+        despesa.data = new Date(despesa.data);
+      });
+    });
   }
 
   excluir(despesa: Despesa) {
-    this.service.delete(despesa).subscribe(
-      () => {
-        this.despesas.splice(this.despesas.indexOf(despesa), 1);
-      }
-    );
+    this.service.delete(despesa).subscribe(() => {
+      this.despesas.splice(this.despesas.indexOf(despesa), 1);
+    });
 
     this.showModalDeletar = false;
   }

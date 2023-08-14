@@ -9,9 +9,8 @@ describe('ListarDespesaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListarDespesaComponent ]
-    })
-    .compileComponents();
+      declarations: [ListarDespesaComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

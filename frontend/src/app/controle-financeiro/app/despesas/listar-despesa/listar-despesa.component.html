@@ -19,39 +19,72 @@
         <td>{{ utils.capitalize(despesa.categoria) }}</td>
         <td>
           <!-- <button type="button" class="btn btn-primary" (click)="editar(despesa)">Editar</button> -->
-          <button type="button" class="btn btn-danger" (click)="abrirModalDeletar(despesa)">Excluir</button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="abrirModalDeletar(despesa)">
+            Excluir
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<a class="nav-link" routerLink="./criarDespesa" routerLinkActive="active" ariaCurrentWhenActive="page">
-  <button type="button" class="btn btn-primary">
-    Cadastrar
-  </button>
+<a
+  class="nav-link"
+  routerLink="./criarDespesa"
+  routerLinkActive="active"
+  ariaCurrentWhenActive="page">
+  <button type="button" class="btn btn-primary">Cadastrar</button>
 </a>
 
 <!-- Modal -->
-<div class="modal fade show" #exampleModal id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" [class.d-block]="showModalDeletar">
+<div
+  class="modal fade show"
+  #exampleModal
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  [class.d-block]="showModalDeletar">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
-        <button type="button" class="close" data-dismiss="modal" (click)="showModalDeletar = false" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          (click)="showModalDeletar = false"
+          aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Deseja deletar o registro?<br>
-        <strong>Id:</strong> {{ despesaSelecionada.id }}<br>
-        <strong>Descrição:</strong> {{ despesaSelecionada.descricao }}<br>
-
+        Deseja deletar o registro?<br />
+        <strong>Id:</strong> {{ despesaSelecionada.id }}<br />
+        <strong>Descrição:</strong> {{ despesaSelecionada.descricao }}<br />
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="showModalDeletar = false">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="excluir(despesaSelecionada)">Confirmar</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="showModalDeletar = false">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="excluir(despesaSelecionada)">
+          Confirmar
+        </button>
       </div>
     </div>
   </div>
 </div>
-<div class="modal-backdrop fade" [class]="showModalDeletar? 'd-block' : 'd-none'" [class.show]="showModalDeletar" ></div>
+<div
+  class="modal-backdrop fade"
+  [class]="showModalDeletar ? 'd-block' : 'd-none'"
+  [class.show]="showModalDeletar"></div>

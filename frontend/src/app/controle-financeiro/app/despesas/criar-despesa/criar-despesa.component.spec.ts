@@ -11,9 +11,8 @@ describe('CriarDespesaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CriarDespesaComponent ]
-    })
-    .compileComponents();
+      declarations: [CriarDespesaComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

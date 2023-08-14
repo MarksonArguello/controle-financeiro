@@ -8,20 +8,13 @@ import { DespesasComponent } from './app/despesas/despesas.component';
 import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despesa.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
     ListarDespesaComponent,
     DespesasComponent,
-    CriarDespesaComponent
+    CriarDespesaComponent,
   ],
-  imports: [
-    CommonModule,
-    ControleFinanceiroRoutingModule,
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, ControleFinanceiroRoutingModule, ReactiveFormsModule],
 })
-export class ControleFinanceiroModule { }
+export class ControleFinanceiroModule {}

@@ -7,15 +7,12 @@ import { DespesaPage } from '../models/despesaPage';
 import { Categoria } from '../models/categoria';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DespesaService {
+  private API = 'http://localhost:8080/despesas';
 
-  private API = "http://localhost:8080/despesas";
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   get(): Observable<DespesaPage> {
     return this.http.get<DespesaPage>(this.API);
@@ -32,5 +29,4 @@ export class DespesaService {
   create(despesa: Despesa): Observable<Despesa> {
     return this.http.post<Despesa>(this.API, despesa);
   }
-
 }

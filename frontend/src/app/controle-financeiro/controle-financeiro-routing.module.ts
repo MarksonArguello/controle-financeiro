@@ -5,11 +5,11 @@ import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despes
 
 const routes: Routes = [
   { path: 'criarDespesa', component: CriarDespesaComponent },
-  { path: '', component: ListarDespesaComponent }
+  { path: '', component: ListarDespesaComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ControleFinanceiroRoutingModule { }
+export class ControleFinanceiroRoutingModule {}
