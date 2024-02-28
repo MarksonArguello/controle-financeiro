@@ -31,9 +31,9 @@ public class SecurityFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String tokenJWT = recuperarTokenJWT(request);
-        System.out.println(tokenJWT);
+
         if (tokenJWT != null) {
-            System.out.println(tokenJWT);
+
             String subject = tokenService.getSubject(tokenJWT);
 
             UserDetails usuario = usuarioRepository.findByLogin(subject);
