@@ -27,7 +27,7 @@
       <input formControlName="data" type="date" class="form-control" />
     </div>
     <div class="col">
-      <label for="categoria" class="form-label">Descrição</label>
+      <label for="categoria" class="form-label">Categorias</label>
       <select formControlName="categoria" class="form-control">
         <option *ngFor="let categoria of categorias" [value]="categoria.valor">
           {{ categoria.texto }}
