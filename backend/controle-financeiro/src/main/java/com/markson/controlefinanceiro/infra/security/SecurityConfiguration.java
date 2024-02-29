@@ -22,12 +22,13 @@ public class SecurityConfiguration {
     private SecurityFilter securityFilter;
 
     private static final String[] AUTH_WHITELIST = {
-            "**/swagger-resources/**",
-            "**/swagger-ui.html",
-            "**/v2/api-docs",
-            "**/webjars/**",
-            "**/v3/api-docs",
-            "**/swagger-ui/**"
+            "/swagger-ui.html",
+            "/swagger-resources/**",
+            "/v2/api-docs",
+            "/webjars/**",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/configuration/ui"
     };
 
     @Bean
@@ -35,13 +36,16 @@ public class SecurityConfiguration {
 
         return http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeHttpRequests()
-                .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
-                .requestMatchers("/**").permitAll().and().build();
-                //.anyRequest().authenticated()
-                //.and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-                //.build();
+                    .and()
+                .authorizeHttpRequests()
+                    .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+                    .requestMatchers(AUTH_WHITELIST).permitAll()
+                .anyRequest()
+                    .authenticated()
+                    .and()
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {

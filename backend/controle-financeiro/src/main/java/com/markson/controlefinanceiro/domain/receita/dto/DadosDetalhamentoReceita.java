@@ -1,13 +1,26 @@
 package com.markson.controlefinanceiro.domain.receita.dto;
 
 import com.markson.controlefinanceiro.domain.receita.Receita;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
+@Schema(
+        name = "Dados de Detalhamento de Receita",
+        description = "Dados de Detalhamento de Receita"
+)
 public record DadosDetalhamentoReceita(
+        @Schema(
+                example = "1"
+        )
         Long id,
+        @Schema(
+                example = "Salário"
+        )
         String descricao,
+        @Schema(
+                example = "600.00"
+        )
         BigDecimal valor,
         LocalDateTime data
 ) {

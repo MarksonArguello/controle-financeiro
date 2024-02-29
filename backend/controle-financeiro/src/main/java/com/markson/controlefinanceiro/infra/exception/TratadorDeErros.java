@@ -25,7 +25,7 @@ public class TratadorDeErros {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity tratarErroJsonRequest(HttpMessageNotReadableException ex) {
-        return ResponseEntity.badRequest().body(new DadosErroValidacao("body", "Malformed JSON request"));
+        return ResponseEntity.badRequest().body(new DadosErroValidacao("body", ex.getMessage()));
     }
 
     @ExceptionHandler(ValidacaoException.class)
@@ -35,7 +35,7 @@ public class TratadorDeErros {
                 .body(ex.getMessage());
     }
 
-    private record DadosErroValidacao(String campo, String mensagem) {
+    public record DadosErroValidacao(String campo, String mensagem) {
         public DadosErroValidacao(FieldError erro) {
             this(erro.getField(), erro.getDefaultMessage());
         }
