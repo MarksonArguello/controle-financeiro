@@ -34,7 +34,7 @@ export class DespesaService {
     return this.http.put<Despesa>(`${this.API}/${despesa.id}`, despesa);
   }
 
-  getDespesaById(id: string) {
+  getDespesaById(id: string): Observable<Despesa> {
     return this.http.get<Despesa>(`${this.API}/${id}`);
   }
 }
