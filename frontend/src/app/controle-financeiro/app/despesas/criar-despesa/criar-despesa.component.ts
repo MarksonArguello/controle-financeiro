@@ -4,6 +4,7 @@ import { DespesaService } from 'src/app/controle-financeiro/services/despesa.ser
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Utils } from 'src/app/controle-financeiro/utils/Utils';
 
 @Component({
   selector: 'app-criar-despesa',
@@ -29,27 +30,11 @@ export class CriarDespesaComponent implements OnInit {
       categoria: ['OUTRAS'],
     });
 
-    this.formulario.get('valor')?.valueChanges.subscribe(valorDigitado => {
-      if (!valorDigitado) return;
-
-      const MAX_INT_LEN = 5;
-      const MAX_DECIMAL_LEN = 2;
-      if (valorDigitado.toString().split('.')[0].length > MAX_INT_LEN) {
-        this.formulario
-          .get('valor')
-          ?.setValue(valorDigitado.toString().slice(0, MAX_INT_LEN));
-      }
-
-      // Check if the value has more than 2 decimal places, if so, round it to 2 decimal places
-      if (
-        valorDigitado &&
-        valorDigitado.toString().split('.')[1]?.length > MAX_DECIMAL_LEN
-      ) {
-        const valorFormatado =
-          parseFloat(valorDigitado).toFixed(MAX_DECIMAL_LEN);
-        this.formulario.get('valor')?.setValue(valorFormatado);
-      }
-    });
+    this.formulario
+      .get('valor')
+      ?.valueChanges.subscribe(valorDigitado =>
+        Utils.mantemValorFormatado(valorDigitado, this.formulario)
+      );
 
     this.listarCategorias();
   }
