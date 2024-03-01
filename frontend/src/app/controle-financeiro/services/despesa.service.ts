@@ -29,4 +29,12 @@ export class DespesaService {
   create(despesa: Despesa): Observable<Despesa> {
     return this.http.post<Despesa>(this.API, despesa);
   }
+
+  update(despesa: Despesa): Observable<Despesa> {
+    return this.http.put<Despesa>(`${this.API}/${despesa.id}`, despesa);
+  }
+
+  getDespesaById(id: string) {
+    return this.http.get<Despesa>(`${this.API}/${id}`);
+  }
 }

@@ -17,8 +17,14 @@
         <td>{{ utils.formatarMoeda(despesa.valor) }}</td>
         <td>{{ utils.formatarData(despesa.data) }}</td>
         <td>{{ utils.capitalize(despesa.categoria) }}</td>
-        <td>
-          <!-- <button type="button" class="btn btn-primary" (click)="editar(despesa)">Editar</button> -->
+        <td class="d-flex justify-content-between botoes-acao">
+          <a
+            class="nav-link"
+            routerLink="./alterarDespesa/{{ despesa.id }}"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page">
+            <button type="button" class="btn btn-primary">Editar</button>
+          </a>
           <button
             type="button"
             class="btn btn-danger"

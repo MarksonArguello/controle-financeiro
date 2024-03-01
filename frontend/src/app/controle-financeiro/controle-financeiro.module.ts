@@ -7,6 +7,7 @@ import { ListarDespesaComponent } from './app/despesas/listar-despesa/listar-des
 import { DespesasComponent } from './app/despesas/despesas.component';
 import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despesa.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AtualizarDespesasComponent } from './app/despesas/atualizar-despesas/atualizar-despesas.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListarDespesaComponent,
     DespesasComponent,
     CriarDespesaComponent,
+    AtualizarDespesasComponent,
   ],
   imports: [CommonModule, ControleFinanceiroRoutingModule, ReactiveFormsModule],
 })
