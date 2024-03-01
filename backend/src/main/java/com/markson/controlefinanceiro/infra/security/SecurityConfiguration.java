@@ -42,7 +42,8 @@ public class SecurityConfiguration {
                     .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                     .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest()
-                    .authenticated()
+                    //.authenticated()
+                    .permitAll()
                     .and()
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
