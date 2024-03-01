@@ -1,51 +1,53 @@
-<h3>Atualizar despesa</h3>
-<form [formGroup]="formulario" *ngIf="formulario">
-  <div class="row">
-    <div class="col">
-      <label for="descricao" class="form-label">Descrição</label>
-      <input
-        formControlName="descricao"
-        class="form-control"
-        type="text"
-        placeholder="Conta de luz"
-        aria-label="default input example" />
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col">
-      <label for="valor" class="form-label">Valor</label>
-      <input
-        formControlName="valor"
-        class="form-control"
-        type="number"
-        lang="en-US"
-        aria-label="default input example" />
-    </div>
-    <div class="col">
-      <label for="data" class="form-label">Data</label>
-      <input formControlName="data" type="date" class="form-control" />
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col d-flex align-items-end">
-      <div class="d-flex justify-content-evenly w-100">
-        <a
-          routerLink="/controle-financeiro"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page">
-          <button
-            type="button"
-            routerLinkActive="router-link-active"
-            class="btn btn-danger">
-            Cancelar
-          </button>
-        </a>
-        <button (click)="atualizarDespesa()" class="btn btn-primary">
-          Atualizar
-        </button>
+<div class="card shadow-sm">
+  <form [formGroup]="formulario" *ngIf="formulario" class="card-body">
+    <h3 class="card-title">Atualizar despesa</h3>
+    <div class="row">
+      <div class="col">
+        <label for="descricao" class="form-label">Descrição</label>
+        <input
+          formControlName="descricao"
+          class="form-control"
+          type="text"
+          placeholder="Conta de luz"
+          aria-label="default input example" />
       </div>
     </div>
-  </div>
-</form>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label for="valor" class="form-label">Valor</label>
+        <input
+          formControlName="valor"
+          class="form-control"
+          type="number"
+          lang="en-US"
+          aria-label="default input example" />
+      </div>
+      <div class="col">
+        <label for="data" class="form-label">Data</label>
+        <input formControlName="data" type="date" class="form-control" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col d-flex align-items-end">
+        <div class="d-flex justify-content-evenly w-100">
+          <a
+            routerLink="/controle-financeiro"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page">
+            <button
+              type="button"
+              routerLinkActive="router-link-active"
+              class="btn btn-danger">
+              Cancelar
+            </button>
+          </a>
+          <button (click)="atualizarDespesa()" class="btn btn-primary">
+            Atualizar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

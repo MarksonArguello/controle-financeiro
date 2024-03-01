@@ -1,7 +1,6 @@
 .despesas {
   display: block;
   overflow-x: auto;
-  width: 600px;
 }
 
 td {

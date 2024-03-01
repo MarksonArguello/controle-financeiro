@@ -41,7 +41,8 @@ export class Utils {
       valorDigitado.toString().split('.')[1]?.length > MAX_DECIMAL_LEN
     ) {
       const valorFormatado = parseFloat(valorDigitado).toFixed(MAX_DECIMAL_LEN);
-      formulario.get('valor')?.setValue(valorFormatado);
+
+      formulario.patchValue({ valor: valorFormatado });
     }
   }
 }

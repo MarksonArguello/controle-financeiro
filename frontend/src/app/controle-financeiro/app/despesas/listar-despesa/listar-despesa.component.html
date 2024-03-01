@@ -1,49 +1,53 @@
-<div class="despesas">
-  <table class="table despesas">
-    <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">Descrição</th>
-        <th scope="col">Valor</th>
-        <th scope="col">Data</th>
-        <th scope="col">Categoria</th>
-        <th scope="col">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let despesa of despesas">
-        <th scope="row">{{ despesa.id }}</th>
-        <td>{{ despesa.descricao }}</td>
-        <td>{{ utils.formatarMoeda(despesa.valor) }}</td>
-        <td>{{ utils.formatarData(despesa.data) }}</td>
-        <td>{{ utils.capitalize(despesa.categoria) }}</td>
-        <td class="d-flex justify-content-between botoes-acao">
-          <a
-            class="nav-link"
-            routerLink="./alterarDespesa/{{ despesa.id }}"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page">
-            <button type="button" class="btn btn-primary">Editar</button>
-          </a>
-          <button
-            type="button"
-            class="btn btn-danger"
-            (click)="abrirModalDeletar(despesa)">
-            Excluir
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="card shadow-sm">
+  <div class="despesas card-body">
+    <h3 class="card-title">Despesas</h3>
+    <table class="table despesas">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Data</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let despesa of despesas">
+          <th scope="row">{{ despesa.id }}</th>
+          <td>{{ despesa.descricao }}</td>
+          <td>{{ utils.formatarMoeda(despesa.valor) }}</td>
+          <td>{{ utils.formatarData(despesa.data) }}</td>
+          <td>{{ utils.capitalize(despesa.categoria) }}</td>
+          <td class="d-flex justify-content-between botoes-acao">
+            <a
+              class="nav-link"
+              routerLink="./alterarDespesa/{{ despesa.id }}"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page">
+              <button type="button" class="btn btn-primary">Editar</button>
+            </a>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="abrirModalDeletar(despesa)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex">
+      <a
+        class="nav-link"
+        routerLink="./criarDespesa"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page">
+        <button type="button" class="btn btn-primary">Cadastrar</button>
+      </a>
+    </div>
+  </div>
 </div>
-
-<a
-  class="nav-link"
-  routerLink="./criarDespesa"
-  routerLinkActive="active"
-  ariaCurrentWhenActive="page">
-  <button type="button" class="btn btn-primary">Cadastrar</button>
-</a>
 
 <!-- Modal -->
 <div
@@ -67,10 +71,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="despesaSelecionada.id">
         Deseja deletar o registro?<br />
         <strong>Id:</strong> {{ despesaSelecionada.id }}<br />
         <strong>Descrição:</strong> {{ despesaSelecionada.descricao }}<br />
+        <strong>Valor:</strong>
+        {{ utils.formatarMoeda(despesaSelecionada.valor) }}<br />
+        <strong>Data:</strong> {{ utils.formatarData(despesaSelecionada.data)
+        }}<br />
+        <strong>Categoria:</strong>
+        {{ utils.capitalize(despesaSelecionada.categoria) }}
       </div>
       <div class="modal-footer">
         <button
