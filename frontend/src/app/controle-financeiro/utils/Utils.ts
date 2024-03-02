@@ -22,27 +22,46 @@ export class Utils {
     );
   }
 
+  private static parteInteira(valor: number): string {
+    return Math.trunc(valor).toString();
+  }
+
+  private static parteDecimal(valor: number): string {
+    return valor.toString().split('.')[1];
+  }
+
+  private static arredondaParteDecimal(
+    valor: number,
+    MAX_DECIMAL_LEN: number
+  ): string {
+    if (!valor) return '';
+    if (Utils.parteDecimal(valor).length <= MAX_DECIMAL_LEN)
+      return valor.toString();
+    return valor.toString().slice(0, -1);
+  }
+
   public static mantemValorFormatado(
-    valorDigitado: string,
+    valorDigitado: number,
     formulario: FormGroup<any>
   ): void {
     if (!valorDigitado) return;
 
+    if (isNaN(valorDigitado)) {
+      formulario.patchValue({
+        valor: valorDigitado.toString().slice(0, -1),
+      });
+    }
+
     const MAX_INT_LEN = 5;
     const MAX_DECIMAL_LEN = 2;
-    if (valorDigitado.toString().split('.')[0].length > MAX_INT_LEN) {
+    if (Utils.parteInteira(valorDigitado).length > MAX_INT_LEN) {
       formulario
         .get('valor')
         ?.setValue(valorDigitado.toString().slice(0, MAX_INT_LEN));
     }
-    // Check if the value has more than 2 decimal places, if so, round it to 2 decimal places
-    if (
-      valorDigitado &&
-      valorDigitado.toString().split('.')[1]?.length > MAX_DECIMAL_LEN
-    ) {
-      const valorFormatado = parseFloat(valorDigitado).toFixed(MAX_DECIMAL_LEN);
 
-      formulario.patchValue({ valor: valorFormatado });
-    }
+    formulario.patchValue({
+      valor: Utils.arredondaParteDecimal(valorDigitado, MAX_DECIMAL_LEN),
+    });
   }
 }
