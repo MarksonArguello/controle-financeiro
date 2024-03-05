@@ -2,3 +2,7 @@ main {
   display: flex;
   justify-content: center;
 }
+
+::ng-deep .botoes-acao {
+  gap: 5px;
+}
