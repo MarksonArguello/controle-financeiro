@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Despesa } from '../models/despesa';
-import { DespesaPage } from '../models/despesaPage';
-import { Categoria } from '../models/categoria';
+import { Despesa } from '../models/depesas/despesa';
+import { DespesaPage } from '../models/depesas/despesaPage';
+import { Categoria } from '../models/depesas/categoria';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Despesa } from 'src/app/controle-financeiro/models/despesa';
+import { Despesa } from 'src/app/controle-financeiro/models/depesas/despesa';
 import { DespesaService } from 'src/app/controle-financeiro/services/despesa.service';
 import { Utils } from 'src/app/controle-financeiro/utils/Utils';
 

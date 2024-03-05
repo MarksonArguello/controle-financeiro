@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Categoria } from 'src/app/controle-financeiro/models/categoria';
+import { Categoria } from 'src/app/controle-financeiro/models/depesas/categoria';
 import { DespesaService } from 'src/app/controle-financeiro/services/despesa.service';
 import { Utils } from 'src/app/controle-financeiro/utils/Utils';
 

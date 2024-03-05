@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Categoria } from 'src/app/controle-financeiro/models/categoria';
+import { Categoria } from 'src/app/controle-financeiro/models/depesas/categoria';
 import { DespesaService } from 'src/app/controle-financeiro/services/despesa.service';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
