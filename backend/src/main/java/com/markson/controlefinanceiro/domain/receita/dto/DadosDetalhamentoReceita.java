@@ -4,7 +4,7 @@ import com.markson.controlefinanceiro.domain.receita.Receita;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 @Schema(
         name = "Dados de Detalhamento de Receita",
         description = "Dados de Detalhamento de Receita"
@@ -22,7 +22,7 @@ public record DadosDetalhamentoReceita(
                 example = "600.00"
         )
         BigDecimal valor,
-        LocalDateTime data
+        LocalDate data
 ) {
     public DadosDetalhamentoReceita(Receita receita) {
         this(

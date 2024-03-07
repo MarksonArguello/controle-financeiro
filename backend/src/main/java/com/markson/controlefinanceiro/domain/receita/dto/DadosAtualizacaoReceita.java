@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Schema(
         name = "Dados de Atualização de Receita",
@@ -23,6 +23,6 @@ public record DadosAtualizacaoReceita(
         @NotNull
         BigDecimal valor,
         @NotNull
-        LocalDateTime data
+        LocalDate data
 ) {
 }

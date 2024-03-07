@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 @Schema(
         name = "Dados de Cadastramento de Receita",
         description = "Dados de Cadastramento de Receita"
@@ -22,6 +22,6 @@ public record DadosCadastramentoReceita(
         @NotNull(message = "valor não pode ser vazio")
         BigDecimal valor,
         @NotNull(message = "data não pode ser vazia")
-        LocalDateTime data
+        LocalDate data
 ) {
 }

@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity(name = "Receita")
 @Table(name = "receitas")
@@ -24,7 +24,7 @@ public class Receita {
     private Long id;
     private String descricao;
     private BigDecimal valor;
-    private LocalDateTime data;
+    private LocalDate data;
 
     public Receita(DadosCadastramentoReceita dadosCadastramento) {
         this(
