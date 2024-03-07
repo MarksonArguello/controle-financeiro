@@ -5,4 +5,46 @@ main {
 
 ::ng-deep .botoes-acao {
   gap: 5px;
+  border: 0;
+}
+
+::ng-deep .card h3 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #333333;
+  text-transform: uppercase;
+}
+
+::ng-deep .card label {
+  color: #555555;
+}
+
+::ng-deep table {
+  filter: none;
+  border-radius: 6px;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+::ng-deep .table thead tr th {
+  background-color: #2bb15ef2;
+  color: #ffffff;
+  text-align: left;
+}
+
+::ng-deep .table th,
+::ng-deep .table td {
+  padding: 12px 15px;
+}
+
+::ng-deep .table tbody tr {
+  border-style: none;
+  border-bottom: 1px solid #dddddd;
+}
+
+::ng-deep .table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
 }
