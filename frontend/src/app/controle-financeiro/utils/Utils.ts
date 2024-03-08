@@ -27,7 +27,8 @@ export class Utils {
   }
 
   private static parteDecimal(valor: number): string {
-    return valor.toString().split('.')[1];
+    const partes = valor.toString().split('.');
+    return partes.length > 1 ? partes[1] : '';
   }
 
   private static arredondaParteDecimal(
@@ -60,8 +61,10 @@ export class Utils {
         ?.setValue(valorDigitado.toString().slice(0, MAX_INT_LEN));
     }
 
-    formulario.patchValue({
-      valor: Utils.arredondaParteDecimal(valorDigitado, MAX_DECIMAL_LEN),
-    });
+    if (Utils.parteDecimal(valorDigitado).length > MAX_DECIMAL_LEN) {
+      formulario.patchValue({
+        valor: Utils.arredondaParteDecimal(valorDigitado, MAX_DECIMAL_LEN),
+      });
+    }
   }
 }

@@ -9,6 +9,7 @@ import { CriarDespesaComponent } from './app/despesas/criar-despesa/criar-despes
 import { ReactiveFormsModule } from '@angular/forms';
 import { AtualizarDespesasComponent } from './app/despesas/atualizar-despesas/atualizar-despesas.component';
 import { ListarReceitaComponent } from './app/receitas/listar-receita/listar-receita.component';
+import { CriarReceitaComponent } from './app/receitas/criar-receita/criar-receita.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ListarReceitaComponent } from './app/receitas/listar-receita/listar-rec
     CriarDespesaComponent,
     AtualizarDespesasComponent,
     ListarReceitaComponent,
+    CriarReceitaComponent,
   ],
   imports: [CommonModule, ControleFinanceiroRoutingModule, ReactiveFormsModule],
 })
