@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginComponent implements OnInit {
   formulario!: FormGroup;
   returnUrl!: string;
+  error = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,14 +21,29 @@ export class LoginComponent implements OnInit {
     private service: AuthenticationService
   ) {
     this.formulario = this.formBuilder.group({
-      login: [''],
-      senha: [''],
+      login: ['', Validators.required],
+      senha: ['', Validators.required],
     });
   }
 
   logar() {
-    this.service.logar(this.f().login, this.f().senha).subscribe();
-    this.router.navigate([this.returnUrl]);
+    if (this.formulario.invalid) {
+      return;
+    }
+
+    this.service
+      .logar(this.f().login, this.f().senha)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.service.setUserName(this.f().login);
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+          console.log(error);
+        }
+      );
   }
 
   f() {

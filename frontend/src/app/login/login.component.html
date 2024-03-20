@@ -23,6 +23,10 @@
       </div>
     </div>
 
+    <div *ngIf="error" class="row">
+      <div class="alert alert-danger mt-3 mb-0">{{ error }}</div>
+    </div>
+
     <div class="row mt-3">
       <div class="col d-flex align-items-end">
         <div class="d-flex justify-content-evenly w-100">

@@ -28,6 +28,22 @@
           >Controle financeiro</a
         >
       </div>
+      <div class="navbar-nav ms-auto">
+        <button
+          *ngIf="!authService.getToken()"
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page">
+          Login
+        </button>
+        <button
+          *ngIf="authService.getToken()"
+          class="nav-link"
+          (click)="authService.logout()">
+          Logout
+        </button>
+      </div>
     </div>
   </div>
 </nav>

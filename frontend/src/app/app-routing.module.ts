@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './services/guard/auth.guard';
 
 const routes: Routes = [
   { path: 'home', children: [] },
@@ -11,6 +12,7 @@ const routes: Routes = [
       import('./controle-financeiro/controle-financeiro.module').then(
         m => m.ControleFinanceiroModule
       ),
+    canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ]; // sets up routes constant where you define your routes
