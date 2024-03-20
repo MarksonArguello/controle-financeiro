@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { first } from 'rxjs';
@@ -13,6 +18,7 @@ export class LoginComponent implements OnInit {
   formulario!: FormGroup;
   returnUrl!: string;
   error = '';
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,33 +30,42 @@ export class LoginComponent implements OnInit {
       login: ['', Validators.required],
       senha: ['', Validators.required],
     });
+
+    this.formulario.valueChanges.subscribe(() => (this.error = ''));
   }
 
   logar() {
+    this.submitted = true;
+
     if (this.formulario.invalid) {
       return;
     }
 
     this.service
-      .logar(this.f().login, this.f().senha)
+      .logar(this.formulario.value.login, this.formulario.value.senha)
       .pipe(first())
       .subscribe(
         data => {
-          this.service.setUserName(this.f().login);
+          this.service.setUserName(this.formulario.value.login);
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.error = error;
-          console.log(error);
+          if (error.status == 403) {
+            this.error = 'Usuário ou senha inválidos';
+          }
         }
       );
   }
 
-  f() {
-    return this.formulario.value;
-  }
-
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+  }
+
+  get login() {
+    return this.formulario.get('login') as FormControl;
+  }
+
+  get senha() {
+    return this.formulario.get('senha') as FormControl;
   }
 }

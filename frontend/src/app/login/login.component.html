@@ -7,8 +7,12 @@
         <input
           formControlName="login"
           class="form-control"
+          [ngClass]="{ 'is-invalid': login.errors && submitted }"
           type="text"
           aria-label="default input example" />
+        <div *ngIf="login?.errors?.['required']" class="invalid-feedback">
+          Login é obrigatório
+        </div>
       </div>
     </div>
 
@@ -18,8 +22,12 @@
         <input
           formControlName="senha"
           class="form-control"
+          [ngClass]="{ 'is-invalid': senha.errors && submitted }"
           type="password"
           aria-label="default input example" />
+        <div *ngIf="senha?.errors?.['required']" class="invalid-feedback">
+          Senha é obrigatório
+        </div>
       </div>
     </div>
 
