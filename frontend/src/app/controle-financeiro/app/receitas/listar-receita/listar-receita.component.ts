@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Receita } from 'src/app/controle-financeiro/models/receitas/receita';
 import { receitaService } from 'src/app/controle-financeiro/services/receita.service';
 import { Utils } from 'src/app/controle-financeiro/utils/Utils';
+import { ResumoComponent } from '../../resumo/resumo.component';
 
 @Component({
   selector: 'app-listar-receita',
@@ -9,6 +10,8 @@ import { Utils } from 'src/app/controle-financeiro/utils/Utils';
   styleUrls: ['./listar-receita.component.css'],
 })
 export class ListarReceitaComponent implements OnInit {
+  @Output() listaReceitaUpdate = new EventEmitter();
+
   receitas: Receita[] = [];
   utils: Utils;
 
@@ -27,7 +30,7 @@ export class ListarReceitaComponent implements OnInit {
     this.service.get().subscribe(receitaPage => {
       this.receitas = receitaPage.content.sort((a, b) => a.id - b.id);
       this.receitas.forEach(receita => {
-        receita.data = new Date(receita.data);
+        receita.data = new Date(receita.data + ' ');
       });
     });
   }
@@ -37,6 +40,7 @@ export class ListarReceitaComponent implements OnInit {
       this.receitas.splice(this.receitas.indexOf(receita), 1);
       this.showModalDeletar = false;
       this.listarReceitas();
+      this.listaReceitaUpdate.emit();
     });
   }
 

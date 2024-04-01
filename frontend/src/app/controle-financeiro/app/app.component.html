@@ -1,4 +1,11 @@
-<div class="d-flex justify-content-around flex-grow-1">
-  <app-despesas></app-despesas>
-  <app-listar-receita></app-listar-receita>
-</div>
+<main class="d-flex flex-column flex-grow-1">
+  <div id="dashboard" class="d-flex justify-content-around flex-grow-1 w-100">
+    <app-despesas></app-despesas>
+    <app-listar-receita
+      (listaReceitaUpdate)="resumo.updateData()"></app-listar-receita>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <app-resumo #resumo></app-resumo>
+  </div>
+</main>

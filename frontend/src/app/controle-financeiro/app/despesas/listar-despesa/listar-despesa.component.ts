@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Despesa } from 'src/app/controle-financeiro/models/depesas/despesa';
 import { DespesaService } from 'src/app/controle-financeiro/services/despesa.service';
 import { Utils } from 'src/app/controle-financeiro/utils/Utils';
+import { ResumoComponent } from '../../resumo/resumo.component';
 
 @Component({
   selector: 'app-listar-despesa',
@@ -24,7 +25,7 @@ export class ListarDespesaComponent implements OnInit {
     this.service.get().subscribe(despesaPage => {
       this.despesas = despesaPage.content.sort((a, b) => a.id - b.id);
       this.despesas.forEach(despesa => {
-        despesa.data = new Date(despesa.data);
+        despesa.data = new Date(despesa.data + ' ');
       });
     });
   }

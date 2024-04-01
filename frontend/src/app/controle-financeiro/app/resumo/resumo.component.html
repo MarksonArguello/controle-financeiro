@@ -1,0 +1,20 @@
+<div class="card shadow-sm">
+  <div class="resumo card-body">
+    <h3 class="card-title">Resumo</h3>
+    <div class="d-flex" style="gap: 5px">
+      <div id="receitas" class="resumo-info">
+        Receitas: {{ resumo.totalReceitas | currency: 'BRL' }}
+      </div>
+      <div id="despesas" class="resumo-info">
+        Despesas: {{ resumo.totalDespesas | currency: 'BRL' }}
+      </div>
+      <div
+        id="saldo"
+        class="resumo-info"
+        [ngClass]="resumo.saldo > 0 ? 'positivo' : 'negativo'">
+        Saldo: {{ resumo.saldo | currency: 'BRL' }}
+      </div>
+    </div>
+    <canvas id="canvas" style="height: 400px" class="mt-2">{{ chart }}</canvas>
+  </div>
+</div>
